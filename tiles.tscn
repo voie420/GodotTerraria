@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Images/Tiles.png" type="Texture" id=1]
+[ext_resource path="res://Images/TRUNK.png" type="Texture" id=2]
+[ext_resource path="res://Images/TRUNK_BASE.png" type="Texture" id=3]
+[ext_resource path="res://Images/LEAVES.png" type="Texture" id=4]
+[ext_resource path="res://Images/IRON.png" type="Texture" id=5]
+[ext_resource path="res://Images/tnt.png" type="Texture" id=6]
+[ext_resource path="res://Images/tnt_exploding1.png" type="Texture" id=7]
+[ext_resource path="res://Images/tnt_exploding.png" type="Texture" id=8]
+[ext_resource path="res://Images/stone_bg.png" type="Texture" id=9]
+[ext_resource path="res://sappling.png" type="Texture" id=10]
+[ext_resource path="res://Images/BreakBlock1.png" type="Texture" id=11]
+[ext_resource path="res://Images/BreakBlock2.png" type="Texture" id=12]
+[ext_resource path="res://Images/BreakBlock3.png" type="Texture" id=13]
+[ext_resource path="res://Images/BreakBlock7.png" type="Texture" id=14]
+[ext_resource path="res://Images/BreakBlock5.png" type="Texture" id=15]
+[ext_resource path="res://Images/BreakBlock6.png" type="Texture" id=16]
+[ext_resource path="res://Images/BreakBlock4.png" type="Texture" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="BreakBlock" type="Sprite" parent="Sprite"]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -16, 0 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="BreakBlock" type="Sprite" parent="Sprite2"]
+position = Vector2( 16, 0 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="BreakBlock" type="Sprite" parent="Sprite3"]
+position = Vector2( -16, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite3/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="TrunkBase" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+
+[node name="BreakBlock" type="Sprite" parent="TrunkBase"]
+position = Vector2( -32, 0 )
+
+[node name="Trunk" type="Sprite" parent="."]
+position = Vector2( 48, 0 )
+texture = ExtResource( 2 )
+
+[node name="BreakBlock" type="Sprite" parent="Trunk"]
+position = Vector2( -48, 0 )
+
+[node name="Leaves" type="Sprite" parent="."]
+position = Vector2( 64, 0 )
+texture = ExtResource( 4 )
+
+[node name="BreakBlock" type="Sprite" parent="Leaves"]
+position = Vector2( -64, 0 )
+
+[node name="Iron" type="Sprite" parent="."]
+position = Vector2( 80, 0 )
+texture = ExtResource( 5 )
+
+[node name="BreakBlock" type="Sprite" parent="Iron"]
+position = Vector2( -80, 0 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Iron"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iron/StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="Tnt" type="Sprite" parent="."]
+position = Vector2( 96, 0 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Tnt"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tnt/StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="BreakBlock" type="Sprite" parent="Tnt"]
+position = Vector2( -96, 0 )
+
+[node name="Tnt2" type="Sprite" parent="."]
+position = Vector2( 112, 0 )
+texture = ExtResource( 7 )
+
+[node name="Tnt3" type="Sprite" parent="."]
+position = Vector2( 128, 0 )
+texture = ExtResource( 8 )
+
+[node name="StoneBg" type="Sprite" parent="."]
+position = Vector2( 144, 0 )
+texture = ExtResource( 9 )
+
+[node name="Sappling" type="Sprite" parent="."]
+position = Vector2( 160, 0 )
+texture = ExtResource( 10 )
+
+[node name="BreakBlock" type="Sprite" parent="."]
+position = Vector2( 176, 0 )
+texture = ExtResource( 11 )
+
+[node name="BreakBlock2" type="Sprite" parent="."]
+position = Vector2( 192, 0 )
+texture = ExtResource( 12 )
+
+[node name="BreakBlock3" type="Sprite" parent="."]
+position = Vector2( 208, 0 )
+texture = ExtResource( 13 )
+
+[node name="BreakBlock4" type="Sprite" parent="."]
+position = Vector2( 224, 0 )
+texture = ExtResource( 17 )
+
+[node name="BreakBlock5" type="Sprite" parent="."]
+position = Vector2( 240, 0 )
+texture = ExtResource( 15 )
+
+[node name="BreakBlock6" type="Sprite" parent="."]
+position = Vector2( 256, 0 )
+texture = ExtResource( 16 )
+
+[node name="BreakBlock7" type="Sprite" parent="."]
+position = Vector2( 272, 0 )
+texture = ExtResource( 14 )
