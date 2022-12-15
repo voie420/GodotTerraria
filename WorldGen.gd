@@ -6,6 +6,9 @@ var x_length : int = 2048 #World Length
 var y_depth : int = 128 #World Depth
 var height : int = 64 #World Height
 
+
+
+
 func create_tree(x,y,length,new):
 	if new:
 		for i in length:
@@ -45,11 +48,15 @@ var selected_block = GRASS
 
 onready var selector : Sprite = $selector
 onready var tilemap = $TileMap
+onready var GUI = get_node("../../CanvasLayer/GUI")
+
+onready var tnt_texture = "res://Images/TRUNK.png"
 
 func _physics_process(_delta: float) -> void:
-	
 	if(Input.is_action_just_pressed("1")):
 		selected_block = GRASS
+		GUI.get_child(0).get_child(0).texture = load(tnt_texture)
+		
 	if(Input.is_action_just_pressed("2")):
 		selected_block = STONE
 	if(Input.is_action_just_pressed("3")):
@@ -78,11 +85,20 @@ func _physics_process(_delta: float) -> void:
 			var tile : Vector2 = world_to_map(selector.mouse_pos * 16) # gets the tile we clicked on
 			var block = get_cell(tile.x,tile.y)
 			if block == -1:
+				if selected_block == GRASS:
+					if get_cell(tile.x, tile.y+1) == GRASS:
+						set_cell(tile.x, tile.y+1, DIRT)
 				if selected_block == SAPPLING:
 					if get_cell(tile.x, tile.y+1) == GRASS:
 						create_tree(tile.x,tile.y,randi()%4 + 4, true)
 				else:
-					set_cellv(tile,selected_block)
+					if selected_block == GRASS:
+						if get_cell(tile.x, tile.y-1) != -1:
+							set_cellv(tile, DIRT)
+						else:
+							set_cellv(tile, selected_block)
+					else:
+						set_cellv(tile,selected_block)
 				
 			if block == TRUNK:
 				if get_cell(tile.x, tile.y+1) == GRASS:
@@ -104,14 +120,8 @@ func _physics_process(_delta: float) -> void:
 				break_tree(tile.x, tile.y)
 				
 			var tilemap = $TileMap
-
-			var mouse :Vector2 = get_global_mouse_position()
-			var cell :Vector2 = tilemap.world_to_map(mouse)
-			var abc :int = tilemap.get_cellv(cell)
-			var new_abc :int = (abc + 1) % 3 # just an example plus 1 modules 3
-			tilemap.set_cellv(cell, new_abc)
 				
-			#set_cellv(tile,-1)
+			set_cellv(tile,-1)
 
 func _ready():
 	randomize() #Randomize the internal game seed
